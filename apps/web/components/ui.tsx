@@ -14,7 +14,7 @@ const VARIANTS: Record<Variant, string> = {
   danger:
     "bg-gradient-to-b from-[#FF5D72] to-negative text-white border-[#C9384B] shadow-btn-negative hover:from-[#FF7285] hover:to-[#F85068]",
   secondary:
-    "bg-gradient-to-b from-surface-3 to-surface-2 text-text-primary border-border-strong shadow-btn hover:from-[#262E3A] hover:to-[#1E242E]",
+    "bg-gradient-to-b from-surface-3 to-surface-2 text-text-primary border-border-strong shadow-btn hover:from-[#214276] hover:to-[#17325B]",
   ghost:
     "bg-transparent text-text-secondary border-transparent shadow-none hover:bg-surface-2 hover:text-text-primary"
 };

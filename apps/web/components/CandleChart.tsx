@@ -14,23 +14,25 @@ export function CandleChart({ symbol, interval }: { symbol: string; interval: In
     if (!containerRef.current) return;
 
     const chart = createChart(containerRef.current, {
-      layout: { background: { type: ColorType.Solid, color: "#181A20" }, textColor: "#848E9C" },
+      // Canvas, so the palette can't come from Tailwind — these are the
+      // literal values of surface / text-tertiary / border.
+      layout: { background: { type: ColorType.Solid, color: "#0C1E3A" }, textColor: "#6C87B0" },
       grid: {
-        vertLines: { color: "#2B3139" },
-        horzLines: { color: "#2B3139" }
+        vertLines: { color: "#1B3355" },
+        horzLines: { color: "#1B3355" }
       },
       width: containerRef.current.clientWidth,
       height: 420,
-      timeScale: { timeVisible: true, borderColor: "#2B3139" },
-      rightPriceScale: { borderColor: "#2B3139" },
+      timeScale: { timeVisible: true, borderColor: "#1B3355" },
+      rightPriceScale: { borderColor: "#1B3355" },
       crosshair: { mode: 0 }
     });
 
     const series = chart.addCandlestickSeries({
-      upColor: "#0ECB81",
+      upColor: "#16C784",
       downColor: "#F6465D",
       borderVisible: false,
-      wickUpColor: "#0ECB81",
+      wickUpColor: "#16C784",
       wickDownColor: "#F6465D"
     });
 
