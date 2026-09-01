@@ -1,0 +1,130 @@
+/* Google Fonts must be imported before Tailwind's layers — an @import
+   that appears after other rules is dropped by the CSS parser. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: #071429;
+  color: #ffffff;
+}
+
+html {
+  /* Stops the whole document rubber-banding past its edges, which is the
+     single biggest tell that something is a web page and not an app. */
+  overscroll-behavior-y: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+  /* Removes the 300ms double-tap-to-zoom delay so taps register instantly. */
+  touch-action: manipulation;
+}
+
+/* iOS zooms the viewport whenever a focused field is under 16px and does
+   not zoom back out afterwards, leaving the app scaled and panned. Every
+   text-entry control is therefore pinned to 16px at phone widths.
+   !important is deliberate: Tailwind's text-sm is a class (0-1-0) and
+   outranks any element selector on specificity, so without it the
+   utility silently wins and the zoom comes back. Above 768px the rule
+   doesn't exist at all, so the designed 14px applies normally. */
+@media (max-width: 767px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+::selection {
+  background: #ffc93c;
+  color: #071429;
+}
+
+/* thin, exchange-style scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b3355;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a4a7a;
+}
+
+.mono-num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+button:not(:disabled),
+a[role="button"],
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Chrome/Safari render an opaque autofill background that ignores the
+   theme; this keeps filled fields on-palette. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: 0 0 0 1000px #12294b inset;
+  caret-color: #ffffff;
+  transition: background-color 9999s ease-out 0s;
+}
+
+@keyframes bycrypt-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.live-dot {
+  animation: bycrypt-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes bycrypt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: bycrypt-rise 0.28s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot,
+  .rise-in {
+    animation: none;
+  }
+}

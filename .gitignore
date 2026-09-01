@@ -1,0 +1,36 @@
+backups/
+node_modules/
+.next/
+out/
+build/
+dist/
+.env
+.env.local
+.env*.local
+*.log
+.DS_Store
+.vercel
+.turbo
+next-env.d.ts
+
+# Supabase CLI scratch
+supabase/.temp/
+
+# cPanel deployment bundle (build artifact)
+apps/web/dist-cpanel/
+apps/web/krypton-web-cpanel.zip
+apps/admin/dist-cpanel/
+apps/admin/krypton-admin-cpanel.zip
+
+# Android TWA build — the signing keystore must NEVER be committed.
+# Losing it means the app can never be updated; anyone holding it can
+# publish an update users' phones will trust.
+android/*.keystore
+android/*.jks
+android/**/*.apk
+android/**/*.idsig
+android/**/*.aab
+android/twa/app/build/
+android/twa/.gradle/
+android/twa/build/
+android/twa/local.properties
