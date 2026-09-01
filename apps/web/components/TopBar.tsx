@@ -16,7 +16,7 @@ export async function TopBar() {
     supabase.from("platform_config").select("value").eq("key", "telegram_support_url").maybeSingle()
   ]);
 
-  const telegramUrl = config?.value ?? "https://t.me/";
+  const telegramUrl = config?.value ?? "https://t.me/BYCRYPTinv";
   const name = (profile?.full_name || user?.email || "").trim();
   const initial = (name || "?").charAt(0).toUpperCase();
   const firstName = name.split(/[\s@]/)[0] || "Account";
